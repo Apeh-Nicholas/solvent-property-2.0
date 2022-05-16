@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>backend pratise</title>
+</head>
+<body>
+	<!-- in the view.py write the the following code -->
+def postNick(request):
+if request.method == "POST":
+name = request.POST["name"]
+email = request.POST["email"]
+phone = request.POST["phone"]
+area = request.POST["area"]
+start = request.POST["start"]
+place= request.POST["place"]
+nick = Nick(name=name, email=email, phone=phone, area=area, start=start, place=place)
+nick.save()
+print("Nick saved")
+return render(request, 'intro/land.html')
+
+
+<!-- in the model.py write the folowing code  -->
+
+class Nick(models.model):
+name = models.CharField(max_length)
+email = models.CharField(max_length)
+phone = models.CharField(max_length)
+area = models.CharField(max_length)
+start = models.CharField(max_length)
+place = models.CharField(max_length)
+
+<!-- this is aw u can read read the backend in the admin site -->
+def __str__(self):
+return f"{self.name} by {self.email} is {self.phone} user {self.area} trying {self.start} to {self.place}
+
+then you register the model in admin.py section of ur project
+in the form you r using give every input a name and every dropdown select a value
+style="background-image: url({% static 'sp/prop2.jpg' %});
+</body>
+</html>
